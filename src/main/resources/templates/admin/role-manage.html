@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://getbootstrap.com/docs/4.2/examples/dashboard/# -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>佛大叮当角色管理</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../../css/dashboard.css" rel="stylesheet">
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    .chartjs-render-monitor {
+        -webkit-animation: chartjs-render-animation 0.001s;
+        animation: chartjs-render-animation 0.001s;
+    }</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0"
+       th:href="@{/}">佛大叮当</a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" th:href="@{logout}">Sign out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sideb ar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="https://getbootstrap.com/docs/4.2/examples/dashboard/#">
+                            闲置管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active  text-dark" th:href="@{/admin/admin-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            信息总览 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" th:href="@{/admin/product-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            闲置管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"  th:href="@{/admin/role-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            角色管理<span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                           th:href="@{/admin/comment-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-shopping-cart">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            留言管理
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-dark"
+                           th:href="@{/admin/announce-manage}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-users">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            公告
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="container-fluid">
+                <div class="row mt-2">
+                    <div class="col-md-2">
+                        <button  type="button"
+                                 class="btn btn-primary" data-toggle="modal" data-target="#roleAdd">
+                            <i class="fa fa-plus" aria-hidden="true" ></i>添加
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <form class="form-inline ">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success " type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <table class="table  mt-4">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">角色类型</th>
+                    <th scope="col">角色名称</th>
+                    <th scope="col">备注</th>
+                    <th scope="col">创建时间</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody th:each="role: ${roleList}">
+                    <tr>
+                        <td th:text="${role.roleKey}"></td>
+                        <td th:text="${role.roleName}"></td>
+<!--                        <td th:text="${role.remark}"></td>-->
+                        <td th:switch="${role.remark} != null">
+                            <text th:case="true" th:text="${role.remark}"></text>
+                            <text th:case="false"> </text>
+                        </td>
+                        <td  th:text="${role.createTime}"></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#roleUpdate"
+                                    th:data-roleId="${role.roleId}" th:data-roleName="${role.roleName}"
+                                    th:data-remark="${role.remark}" th:data-roleKey="${role.roleKey}">修改</button>
+                            <a  class="btn btn-outline-danger btn-sm" th:href="@{/role/delete/{roleId}(roleId=${role.roleId})}">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</div>
+
+<!--弹出修改的模态框-->
+<div class="modal fade" id="roleUpdate" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleUpdateModalLabel">修改角色</h5>
+            </div>
+            <div class="modal-body">
+<!--                角色表单-->
+                <form method="post" th:action="@{updateRole}" th:object="${role}">
+                    <div class="form-group row">
+                        <label for="updateRoleId" class="col-sm-3 col-form-label">角色id</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleId" th:field="*{roleId}" readonly>
+                            <!--                            <input type="text" class="form-control" id="roleKeyInput" >-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRoleKey" class="col-sm-3 col-form-label">角色类型</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleKey" th:field="*{roleKey}">
+<!--                            <input type="text" class="form-control" id="roleKeyInput" >-->
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRoleName" class="col-sm-3 col-form-label">角色名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRoleName" th:field="*{roleName}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="updateRemark" class="col-sm-3 col-form-label">备注</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="updateRemark"  th:field="*{remark}">
+                        </div>
+                    </div>
+<!--                    <div class="form-group row">-->
+<!--                        <label for="roleSignInput" class="col-sm-3 col-form-label">权限</label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                            <input type="text" class="form-control" id="roleSignInput" th:field="*{roleSign}">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">更新</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--添加的模态框-->
+<div class="modal fade" id="roleAdd" tabindex="-1" role="dialog" aria-labelledby="roleDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="roleAddModalLabel">添加角色</h5>
+            </div>
+            <div class="modal-body">
+                <!--                角色表单-->
+                <form  method="post" th:action="@{addRole}" th:object="${role}">
+                    <div class="form-group row">
+                        <label for="roleKeyInput" class="col-sm-3 col-form-label">角色类型</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="roleKeyInput" th:field="*{roleKey}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="roleNameInput" class="col-sm-3 col-form-label">角色名称</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="roleNameInput" th:field="*{roleName}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="remarkInput" class="col-sm-3 col-form-label">备注</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="remarkInput" th:field="*{remark}">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" >确定</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+
+
+
+
+
+<script src="../../js/jquery-3.4.1.slim.min.js"></script>
+<script src="../../js/bootstrap.bundle.min.js"></script>
+<script src="../../js/feather.min.js"></script>
+<script src="../../js/Chart.min.js"></script>
+<script src="../../js/dashboard.js"></script>
+
+<!--将信息发送到模态框中-->
+<script>
+      $('#roleUpdate').on('show.bs.modal', function (event) {
+<!--      读取绑定的信息-->
+      var button = $(event.relatedTarget)
+      var roleKey= button.data('roleKey')
+      var roleName= button.data('roleName')
+      var remark = button.data('remark')
+      var roleId=button.data('roleId')
+<!--      修改input中的数据-->
+      var modal = $(this)
+      modal.find('.modal-body #updateRoleKey').val(roleKey)
+      modal.find('.modal-body #updateRoleName').val(roleName)
+      modal.find('.modal-body #updateRemark').val(remark)
+      modal.find('.modal-body #updateRoleId').val(roleId)
+
+      console.log(roleName)
+      console.log(roleKey)
+      console.log(remark)
+      console.log(roleId)
+
+<!--      modal.find('.modal-body #roleSignInput').val(roleSign)-->
+})
+
+</script>
+
+
+</html>
