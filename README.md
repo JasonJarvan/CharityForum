@@ -6,6 +6,9 @@ This project has developed an online forum system, aimed at clarifying the core 
 # CharityForum - Online Discussion Platform
 ## Features
 - Supports user-selected usernames and passwords
+- The purchase link is achieved by adding WeChat or adding QQ.
+- Users can leave messages for products.
+- Users can modify or delete personal items and personal information.
 - Allows posting new threads and responding to existing ones
 - Members can send private messages within the platform, with automatic notifications for new messages
 - Administrators can post announcements, with new announcements displayed at the top of the page in a scrolling manner
@@ -35,21 +38,31 @@ This project has developed an online forum system, aimed at clarifying the core 
 - “Sub-forum Management”: Administrators manage the themes and operational status of sub-forums
 - “Content Review”: Reviews user-submitted content
 - “Forum Statistics”: Displays and analyzes user activity data
-## Development Environment
-- Development IDE: MyEclipse 10
-- Database System: MySql 5.0
-- Java Development Kit: jdk 1.6
-- Operating System: Win 7
-- Server: Tomcat 6.0
-- Modeling Tool: IBM Rational Rose Enterprise Edition
-- Design Tool: PowerDesigner
-- System Encoding: GBK
+## Tech Stack
+- spring boot
+- spring data jpa
+- mysql
+- spring security
+- redis
+- thymeleaf
+- bootstrap4
 ## Deployment Guide
-- Database configuration file located at `src/Configuration.java`
-- Database initialization script `doc/database/init/fancyforum.sql`
-- Database and data files `doc/database/fancyforum-data.sql`
-- Super administrator default login: Username `admin`, Password `admin`
-*The database must be connected before initiating the deployment project, with the initial database username `root` and password `123456`*
+First, create a new database named db_second_hand_bbs in MySQL, then import the SQL file in the mysql folder of this project.
+
+Modify the database configuration according to your local environment, the database configuration is in the application.properties file of the SpringBoot project.
+
+Run the project in IntelliJ IDEA.
+
+Alright, the server has started successfully. Now, simply enter the following URLs in the address bar:
+
+http://localhost:8080/index
+
+http://localhost:8080/admin/login to access the backend admin page.
+
+You can now visit our project.
+
+You can use the admin username and password, both are 'aaa'.
+
 
 # Analysis of Requirements
 ## Functional Requirements
