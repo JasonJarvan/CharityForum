@@ -6,7 +6,7 @@ This project has developed an online forum system, aimed at clarifying the core 
 # CharityForum - Online Discussion Platform
 ## Features
 - Supports user-selected usernames and passwords
-- The purchase link is achieved by adding WeChat or adding QQ.
+- The purchase link is achieved by adding facebook or whatsapp.
 - Users can leave messages for products.
 - Users can modify or delete personal items and personal information.
 - Allows posting new threads and responding to existing ones
